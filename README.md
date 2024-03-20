@@ -17,6 +17,12 @@ El juego continúa hasta que uno de los jugadores alcanza una puntuación predet
 
 - **Personalización de los Nombres de los Jugadores:** Antes de iniciar el juego, se solicita a cada jugador que ingrese su nombre.
 - **Pantalla de Inicio Interactiva:** Los jugadores pueden ingresar sus nombres utilizando un campo de entrada interactivo.
+
+## Funcionalidades
+
+- **Menú de Inicio:** Los jugadores pueden elegir el nivel de dificultad del juego antes de empezar a jugar.
+- **Niveles de Dificultad:** Se pueden seleccionar tres niveles de dificultad: básico, medio y difícil. Cada nivel ajusta la velocidad de la pelota para ofrecer una experiencia de juego diferente.
+
 - **Conteo de Puntos:** El juego realiza un seguimiento de los puntos de cada jugador y muestra la puntuación en la pantalla.
 - **Finalización de la Partida:** El juego finaliza automáticamente cuando uno de los jugadores alcanza la puntuación máxima definida.
 
