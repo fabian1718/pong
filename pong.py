@@ -17,7 +17,7 @@ WHITE = (255, 255, 255)
 # Velocidad de las paletas
 PADDLE_SPEED = 60
 
-# Velocidad de la pelota
+# Velocidad de la pelota (nivel básico)
 BALL_SPEED_X = 0.5
 BALL_SPEED_Y = 0.5
 
@@ -70,8 +70,12 @@ def get_player_name(prompt):
                     else:
                         text += event.unicode
         window.fill((30, 30, 30))
-        txt_surface = font.render(prompt, True, WHITE)  # Mostrar el prompt
-        window.blit(txt_surface, (200, 150))
+
+        # Mostrar el mensaje de prompt
+        prompt_text = font.render(prompt, True, WHITE)
+        window.blit(prompt_text, (200, 150))
+
+        # Dibujar el cuadro de entrada de texto
         txt_surface = font.render(text, True, color)
         width = max(400, txt_surface.get_width()+10)
         input_box.w = width
@@ -82,6 +86,35 @@ def get_player_name(prompt):
 # Obtener los nombres de los jugadores
 player1_name = get_player_name("Ingrese el nombre del Jugador 1:")
 player2_name = get_player_name("Ingrese el nombre del Jugador 2:")
+
+
+# Función para mostrar el menú de dificultad
+def difficulty_menu():
+    font = pygame.font.Font(None, 36)
+    basic_text = font.render("1. Nivel Básico", True, WHITE)
+    medium_text = font.render("2. Nivel Medio", True, WHITE)
+    hard_text = font.render("3. Nivel Difícil", True, WHITE)
+    window.blit(basic_text, (250, 200))
+    window.blit(medium_text, (250, 250))
+    window.blit(hard_text, (250, 300))
+    pygame.display.flip()
+
+# Mostrar menú de dificultad y esperar la selección del usuario
+difficulty_menu()
+selected_difficulty = None
+while selected_difficulty not in ('1', '2', '3'):
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.unicode in ('1', '2', '3'):
+                selected_difficulty = event.unicode
+
+# Asignar la velocidad de la pelota según la dificultad seleccionada
+if selected_difficulty == '2':
+    BALL_SPEED_X *= 2  # Nivel Medio
+    BALL_SPEED_Y *= 2
+elif selected_difficulty == '3':
+    BALL_SPEED_X *= 4  # Nivel Difícil
+    BALL_SPEED_Y *= 4
 
 # Loop principal del juego
 while True:
